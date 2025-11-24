@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Provider/AuthContext';
 
 const Navbar = () => {
-    return (
+  const {user,logout} = useContext(AuthContext);
+  console.log(user)  
+  const handleLogout =() =>{
+    logout()
+    .then(() =>{
+
+    })
+    .catch(error =>{
+      error.message
+    })
+  }
+  return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -16,6 +28,7 @@ const Navbar = () => {
         <NavLink to={'/'} className=''>Home</NavLink>
        <NavLink to={'/all-equipment'} className=''>All Equipment</NavLink>
         <NavLink to={'/add-equipment'} className=''>Add Equipment</NavLink>
+        <NavLink to={'/my-equipment'}>My Equipment</NavLink>
       </ul>
     </div>
     <div>
@@ -55,13 +68,27 @@ const Navbar = () => {
       <NavLink to={'/'} className='btn btn-primary'> Home</NavLink>
        <NavLink to={'/all-equipment'} className='btn btn-primary'>All Equipment</NavLink>
         <NavLink to={'/add-equipment'} className='btn btn-primary'>Add Equipment</NavLink>
+        <NavLink to={'/my-equipment'} className='btn btn-primary'>My Equipment</NavLink>
     </ul>
   </div>
-  <div className="navbar-end gap-2 flex flex-col md:flex-row">
-    <NavLink to={'/login'} className='btn text-white bg-gradient-to-r from-blue-600 to-purple-600
+  <div className="navbar-end gap-2 flex flex-col md:flex-row"> 
+    {
+      user ? <div className='navbar-end gap-2 flex flex-col md:flex-row' >
+        <figure>
+          <img
+            src={user.photoURL}
+            alt={user.displayName || "User photo"}
+            className="w-10 h-10 rounded-full object-cover"
+          /></figure> 
+          <button className='btn text-white bg-gradient-to-r from-blue-600 to-purple-600' type='submit' onClick={handleLogout}>Logout</button>
+      </div>   : <div className='navbar-end gap-2 flex flex-col md:flex-row'>
+             <NavLink to={'/login'} className='btn text-white bg-gradient-to-r from-blue-600 to-purple-600
 '>Login</NavLink>
-    <NavLink to={'/login'} className='btn text-white bg-gradient-to-r from-blue-600 to-purple-600
+    <NavLink to={'/register'} className='btn text-white bg-gradient-to-r from-blue-600 to-purple-600
 '>Register</NavLink>
+          </div>
+    }
+   
   </div>
 </div>
         </div>

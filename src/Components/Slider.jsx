@@ -32,30 +32,33 @@ export default function App() {
       >
         <SwiperSlide>
           <div
-            className="h-full w-full   bg-cover bg-center flex items-center justify-center relative inset-0 opacity-70"
-            style={{ backgroundImage: `url(${slider1})` }}
-          >
-            <div className="absolute inset-0 bg-opacity-70 "></div>
-            <div className="text-center text-white flex flex-col justify-center items-center gap-3 ">
-              <h2 className="text-3xl font-semibold ">Unbeatable Prices</h2>
-              <p>Quality Equipment at Competitive Rates</p>
-              <button
-                className="btn text-white w-[120px] h-[40px] bg-gradient-to-r from-blue-600 to-purple-600
-"
-              >
-                Explore
-              </button>
-            </div>
-          </div>
+  className="h-full w-full bg-cover bg-center flex items-center justify-center relative transition-opacity"
+  style={{ backgroundImage: `url(${slider1})` }}
+>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black opacity-60"></div>
+
+  {/* Content */}
+  <div className="relative z-10 text-center text-white flex flex-col justify-center items-center gap-3">
+    <h2 className="text-3xl font-semibold">Unbeatable Prices</h2>
+    <p>Quality Equipment at Competitive Rates</p>
+    <button
+      className="btn text-white w-[120px] h-[40px] bg-gradient-to-r from-blue-600 to-purple-600"
+    >
+      Explore
+    </button>
+  </div>
+</div>
+
         </SwiperSlide>
 
         <SwiperSlide>
           <div
-            className="h-full w-full bg-cover bg-center flex items-center justify-center relative inset-0 opacity-70"
+            className="h-full w-full  bg-cover bg-center flex items-center justify-center relative inset-0 "
             style={{ backgroundImage: `url(${slider2})` }}
           >
-            <div className="absolute inset-0  bg-opacity-70"></div>
-            <div className="text-center text-white flex flex-col justify-center items-center gap-3 ">
+            <div className="absolute inset-0 bg-black opacity-60"></div>
+            <div className="text-center z-10 text-white flex flex-col justify-center items-center gap-3 ">
               <h2 className="text-3xl font-semibold ">
                 Premium Sports Equipment
               </h2>
@@ -72,11 +75,11 @@ export default function App() {
 
         <SwiperSlide>
           <div
-            className="h-full w-full bg-cover bg-center flex items-center justify-center relative  inset-0 opacity-70"
+            className="h-full w-full bg-cover bg-center flex items-center justify-center relative  inset-0 "
             style={{ backgroundImage: `url(${slider3})` }}
           >
-            <div className="absolute inset-0 bg-opacity-70"></div>
-            <div className="text-center text-white flex flex-col justify-center items-center gap-3 ">
+            <div className="absolute inset-0 bg-black opacity-60"></div>
+            <div className="text-center z-10 text-white flex flex-col justify-center items-center gap-3 ">
               <h2 className="text-3xl font-semibold ">Train Like a Champion</h2>
               <p>Professional Equipment for Every Athlete</p>
               <button

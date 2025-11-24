@@ -9,9 +9,51 @@ import { BiCycling } from "react-icons/bi";
 import { GiMuscleUp } from "react-icons/gi";
 import { GiGolfFlag } from "react-icons/gi";
 import { GiRunningNinja } from "react-icons/gi";
-
+import Swal from 'sweetalert2'
 const AddEquipment = () => {
-    return (
+  const handleAddEquipment = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const newData = Object.fromEntries(formData);
+    console.log(newData);
+    fetch('http://localhost:4001/equipments',{
+      method : 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(newData)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.insertedId){
+        Swal.fire({
+  position: "top-center",
+  icon: "success",
+  title: "Items Addedd Successfully",
+  showConfirmButton: false,
+  timer: 1500,
+  showClass: {
+    popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `
+  },
+  hideClass: {
+    popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `
+  }
+});
+form.reset()
+
+      }
+    })
+  }  
+  return (
         <div className=' md:w-11/12 mx-auto'>
             <Navbar/>
             <div className="card bg-base-100 w-full mx-auto mt-5 max-w-xl shrink-0  shadow-2xl">
@@ -20,21 +62,21 @@ const AddEquipment = () => {
             <h2 className='font-semibold text-xl'>Add New Equipment</h2>
             <p className='text-sm pt-3'>Fill in the details to add new sports equipment to the store</p>
         </div>
-        <form action="">
+        <form action="" onSubmit={handleAddEquipment} >
           <fieldset className="fieldset grid grid-cols-2 gap-3">
             <div>
                <label className="label">Image URL</label>
-          <input type="text" required className="input input-sm" placeholder="https://example.com/image.jpg" name="photo" /> 
+          <input type="text"  required className="input input-sm" placeholder="https://example.com/image.jpg" name="photo" /> 
             </div>
           <div>
             <label className="label">Item Name</label>
-          <input type="text" required  className="input input-sm" placeholder="Professional Basketball" />
+          <input type="text" name='item' required  className="input input-sm" placeholder="Professional Basketball" />
           </div>
           <div>
             <fieldset required className="fieldset select-sm ">
   <label className="label">Category</label>
-  <select defaultValue="Select A Category" className="select text-xs select-xs">
-    <option className='text-xs' disabled={true}>Select A Category</option>
+  <select name='category' defaultValue="Select A Category" className="select text-xs select-xs">
+    <option className='text-xs' disabled={true} >Select A Category</option>
     <option className='text-xs'><IoFootball />Football</option>
     <option className='text-xs'><CiBasketball />Basketball</option>
     <option className='text-xs'><FaTableTennis />Tennis</option>
@@ -50,43 +92,43 @@ const AddEquipment = () => {
           </div>
           <div>
             <label className="label">Price</label>
-          <input type="text" required className="input input-sm" placeholder="200" />
+          <input type="text" name='price' required className="input input-sm" placeholder="200" />
           </div>
           <div>
             <label className="label">Ratings</label>
-          <input type="text" required className="input input-sm" placeholder="4.5" />
+          <input type="text" name='ratings' required className="input input-sm" placeholder="4.5" />
           </div>
           <div>
             <label className="label">Stock Quantity</label>
-          <input type="number" required className="input input-sm" placeholder="10" />
+          <input type="number" name='stock' required className="input input-sm" placeholder="10" />
           </div>
           <div>
             <label className="label">Processing Time</label>
-          <input type="text" required className="input input-sm" placeholder="3-5 Working Days" />
+          <input type="text" name='processing' required className="input input-sm" placeholder="3-5 Working Days" />
           </div>
           <div>
             <label className="label">Customization Options</label>
-          <input type="text" required className="input input-sm" placeholder="Custom color size" />
+          <input type="text" name='customization' required className="input input-sm" placeholder="Custom color size" />
           </div>
           <div>
              <label className="label">User Email</label>
-          <input type="email" required className="input input-sm"  placeholder="user@gmail.com" />
+          <input type="email" name='email' required className="input input-sm"  placeholder="user@gmail.com" />
           </div>
           <div>
              <label className="label">User Name</label>
-          <input type="email" required  className="input input-sm"  placeholder="John Athlete" />
+          <input type="text" name='name' required  className="input input-sm"  placeholder="John Athlete" />
           </div>
           <div  className='col-span-2'>
             <label className="label">Description</label> 
-            <textarea placeholder="Detailed description of the equipment." className="textarea w-full "></textarea>
+            <textarea name='description' placeholder="Detailed description of the equipment." className="textarea w-full "></textarea>
           </div>
           
           <div>
-            <button className="btn btn-neutral w-full mt-4">Add Equipment</button>
+            <button className="btn btn-neutral w-full mt-4" type='submit'>Add Equipment</button>
             
           </div>
           <div className='w-full'>
-            <button className="btn w-full btn-ghost mt-4">Cancel</button>
+            <button type='submit' className="btn w-full btn-ghost mt-4">Cancel</button>
           </div>
         </fieldset>  
         </form>
