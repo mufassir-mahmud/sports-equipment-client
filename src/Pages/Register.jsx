@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 const Register = () => {
   const {createUser,setUser,updateUser,} = useContext(AuthContext)  ;
-  console.log(createUser)
+  // console.log(createUser)
   const handleSignUp = e =>{
         e.preventDefault();
         const form = e.target;  
@@ -15,7 +15,7 @@ const Register = () => {
         const {email,password,  ...userInfo} = Object.fromEntries(formData);
         
         const newUser = {email,...userInfo};
-        console.log(newUser)
+        // console.log(newUser)
         // console.log(email,password, userInfo);
         createUser(email,password)
         .then(result =>{
@@ -24,9 +24,9 @@ const Register = () => {
           const user = result.user;
           const setNewUser = { ...user, displayName: name, photoURL: photo };
           updateUser({displayName: name, photoURL: photo})
-          console.log(setNewUser)
+          // console.log(setNewUser)
           setUser(setNewUser)
-          console.log(setUser);
+          // console.log(setUser);
           fetch('http://localhost:4001/users', {
             method : 'POST',
             headers : {
@@ -36,7 +36,7 @@ const Register = () => {
           })
         })
         .catch(error =>{
-          console.log(error.message)
+          // console.log(error.message)
         })
     }
     return (

@@ -18,11 +18,11 @@ const Login = () => {
     e.preventDefault();
     signInGoogle()
       .then(result => {
-        console.log(result);
+        // console.log(result);
         redirectAfterLogin(); // ✅ navigate after success
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 
@@ -34,11 +34,11 @@ const Login = () => {
 
     loginUser(email, password)
       .then(result => {
-        console.log(result);
+        // console.log(result);
         redirectAfterLogin(); // ✅ navigate after success
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 

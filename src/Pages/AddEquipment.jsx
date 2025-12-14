@@ -16,7 +16,7 @@ const AddEquipment = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newData = Object.fromEntries(formData);
-    console.log(newData);
+    // console.log(newData);
     fetch('http://localhost:4001/equipments',{
       method : 'POST',
       headers: {

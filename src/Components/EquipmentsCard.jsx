@@ -2,7 +2,7 @@ import React from 'react';
 
 const EquipmentsCard = ({equipments}) => {
     const {photo,item,category,description} = equipments
-    console.log(photo)
+    // console.log(photo)
     // price,ratings,stock
     return (
        <div className='mt-10'>

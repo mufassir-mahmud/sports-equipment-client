@@ -16,6 +16,7 @@ import ErrorPage from './Pages/ErrorPage.jsx';
 import PrivateRoute from './Provider/PrivateRoute.jsx';
 import MyEquipment from './Pages/MyEquipment.jsx';
 import EquipmentDetails from './Pages/EquipmentDetails.jsx';
+import UpdateEquipment from './Pages/UpdateEquipment.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,9 @@ const router = createBrowserRouter([
    {path: '/register', element: <Register/>},
    {path: '/equipment-details/:id', element: <PrivateRoute>
     <EquipmentDetails/>
+   </PrivateRoute>, loader: ({params}) => fetch(`http://localhost:4001/equipments/${params.id}`)},
+   {path: '/update-equipment/:id', element: <PrivateRoute>
+    <UpdateEquipment/>
    </PrivateRoute>, loader: ({params}) => fetch(`http://localhost:4001/equipments/${params.id}`)}
 ]);
 createRoot(document.getElementById('root')).render(

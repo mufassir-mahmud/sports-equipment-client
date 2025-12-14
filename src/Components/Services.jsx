@@ -3,7 +3,9 @@ import { MdWorkspacePremium } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import truck from '../Animation/truck.json';
-console.log(truck)
+import premium from '../Animation/Premium.json';
+import rates from '../Animation/rates.json'
+// console.log(truck)
 import Lottie from 'react-lottie-player';
 const Services = () => {
    
@@ -13,7 +15,12 @@ const Services = () => {
         
         {/* Premium Quality */}
         <div className='flex w-82 h-26 items-center gap-3 p-6 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 rounded-xl'>
-            <MdWorkspacePremium className='text-6xl text-primary' />
+                                   <Lottie
+  loop
+  animationData={premium}
+  play
+  style={{ width: 200 }}
+/>
  
 
             <div>
@@ -38,7 +45,12 @@ const Services = () => {
 
         {/* Best Prices */}
         <div className='flex w-72 items-center gap-3 p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-xl'>
-            <FaArrowTrendUp className='text-6xl text-accent' />
+                                   <Lottie
+  loop
+  animationData={rates}
+  play
+  style={{ width: 100 }}
+/>
             <div>
                 <h4 className='text-md font-semibold'>Best Prices</h4>
                 <p className='text-xs'>Competitive pricing with regular deals and discounts</p>
