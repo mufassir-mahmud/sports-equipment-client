@@ -27,7 +27,7 @@ const Register = () => {
           // console.log(setNewUser)
           setUser(setNewUser)
           // console.log(setUser);
-          fetch('http://localhost:4001/users', {
+          fetch('https://sports-equipment-server-one.vercel.app/users', {
             method : 'POST',
             headers : {
               'Content-Type' : 'application/json'

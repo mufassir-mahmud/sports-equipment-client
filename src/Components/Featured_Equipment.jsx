@@ -2,7 +2,7 @@ import React, { use } from 'react';
 // import { useLoaderData, Navigate } from 'react-router';
 import EquipmentsCard from './EquipmentsCard';
 import { Link, useNavigate } from 'react-router';
-const featurePromise = fetch('http://localhost:4001/equipments').then(res => res.json())
+const featurePromise = fetch('https://sports-equipment-server-one.vercel.app/equipments').then(res => res.json())
 //  console.log(featurePromise)
 const Featured_Equipment = () => {
    const initialEquipment = use(featurePromise);

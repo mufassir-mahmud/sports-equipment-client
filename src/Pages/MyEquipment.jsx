@@ -20,7 +20,7 @@ const MyEquipment = () => {
 }).then((result) => {
   // console.log(result.isConfirmed)
   if (result.isConfirmed) {
-   fetch(`http://localhost:4001/equipments/${_id}`, {
+   fetch(`https://sports-equipment-server-one.vercel.app/equipments/${_id}`, {
     method: 'DELETE'
    })
    .then(res => res.json())
@@ -57,7 +57,7 @@ const MyEquipment = () => {
   const [myEquipments, setmyEquipments] = useState([]);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:4001/equipments?email=${user.email}`)
+      fetch(`https://sports-equipment-server-one.vercel.app/equipments?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setmyEquipments(data));
     }

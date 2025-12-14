@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     ]
   },
   {path: '/all-equipment', element: <AllEquipment/>,
-  loader : () => fetch('http://localhost:4001/equipments')
+  loader : () => fetch('https://sports-equipment-server-one.vercel.app/equipments')
   },
    {path: 'add-equipment', element: <PrivateRoute>
     <AddEquipment/>
@@ -41,10 +41,10 @@ const router = createBrowserRouter([
    {path: '/register', element: <Register/>},
    {path: '/equipment-details/:id', element: <PrivateRoute>
     <EquipmentDetails/>
-   </PrivateRoute>, loader: ({params}) => fetch(`http://localhost:4001/equipments/${params.id}`)},
+   </PrivateRoute>, loader: ({params}) => fetch(`https://sports-equipment-server-one.vercel.app/equipments/${params.id}`)},
    {path: '/update-equipment/:id', element: <PrivateRoute>
     <UpdateEquipment/>
-   </PrivateRoute>, loader: ({params}) => fetch(`http://localhost:4001/equipments/${params.id}`)}
+   </PrivateRoute>, loader: ({params}) => fetch(`https://sports-equipment-server-one.vercel.app/equipments/${params.id}`)}
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>

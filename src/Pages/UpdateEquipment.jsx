@@ -30,7 +30,7 @@ const UpdateEquipment = () => {
       denyButtonText: `Don't save`,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4001/equipments/${_id}`,{
+        fetch(`https://sports-equipment-server-one.vercel.app/equipments/${_id}`,{
             method: 'PUT',
             headers:{
                 'content-type' : 'application/json'

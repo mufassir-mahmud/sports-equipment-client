@@ -17,7 +17,7 @@ const AddEquipment = () => {
     const formData = new FormData(form);
     const newData = Object.fromEntries(formData);
     // console.log(newData);
-    fetch('http://localhost:4001/equipments',{
+    fetch('https://sports-equipment-server-one.vercel.app/equipments',{
       method : 'POST',
       headers: {
         'Content-Type' : 'application/json'
